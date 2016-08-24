@@ -24,7 +24,6 @@ iPhone / iPad / iPod with iOS  8 / 9.
 ==============
 iOS 城市选择控制器。<br/>
 
-> ![demo](https://raw.github.com/ibireme/YYKeyboardManager/master/Demo/snapshot.gif
 )
 
 兼容性
@@ -47,4 +46,4 @@ iOS 城市选择控制器。<br/>
     [self.cityButton setTitle:cityName forState:UIControlStateNormal];
 }
 
-总结：so easy !
+==============
