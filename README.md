@@ -33,7 +33,8 @@ iOS 城市选择控制器。<br/>
 
 用法
 ==============
-	// 初始化城市控制器，并设置代理
+```objc
+// 初始化城市控制器，并设置代理
  MYCityListViewController *cityVC = [[MYCityListViewController alloc] init];
  cityVC.delegate = self;
 
@@ -45,5 +46,6 @@ iOS 城市选择控制器。<br/>
 {
     [self.cityButton setTitle:cityName forState:UIControlStateNormal];
 }
+```objc
 
 ==============
