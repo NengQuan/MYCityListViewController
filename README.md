@@ -7,10 +7,6 @@ MYCityListViewController
 [![CocoaPods](http://img.shields.io/cocoapods/v/YYKeyboardManager.svg?style=flat)](http://cocoapods.org/?q=YYKeyboardManager)&nbsp;
 [![CocoaPods](http://img.shields.io/cocoapods/p/YYKeyboardManager.svg?style=flat)](http://cocoapods.org/?q=YYKeyboardManager)&nbsp;
 [![Support](https://img.shields.io/badge/support-iOS%206%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
-[![Build Status](https://travis-ci.org/ibireme/YYKeyboardManager.svg?branch=master)](https://travis-ci.org/ibireme/YYKeyboardManager)
-
-iOS utility class allows you to access keyboard view and track keyboard animation.<br/>
-(It was used by [YYText](https://github.com/ibireme/YYText))
 
 > ![demo](https://www.github.com/NengQuan/MYCityListViewController/master/334.gif
 )
@@ -24,8 +20,6 @@ iPhone / iPad / iPod with iOS  8 / 9.
 中文介绍
 ==============
 iOS 城市选择控制器。<br/>
-
-)
 
 兼容性
 ==============
