@@ -1,0 +1,50 @@
+YYKeyboardManager
+==============
+
+[![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/ibireme/YYKeyboardManager/master/LICENSE)&nbsp;
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)&nbsp;
+[![CocoaPods](http://img.shields.io/cocoapods/v/YYKeyboardManager.svg?style=flat)](http://cocoapods.org/?q=YYKeyboardManager)&nbsp;
+[![CocoaPods](http://img.shields.io/cocoapods/p/YYKeyboardManager.svg?style=flat)](http://cocoapods.org/?q=YYKeyboardManager)&nbsp;
+[![Support](https://img.shields.io/badge/support-iOS%206%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
+[![Build Status](https://travis-ci.org/ibireme/YYKeyboardManager.svg?branch=master)](https://travis-ci.org/ibireme/YYKeyboardManager)
+
+iOS utility class allows you to access keyboard view and track keyboard animation.<br/>
+(It was used by [YYText](https://github.com/ibireme/YYText))
+
+> ![demo](https://raw.github.com/NengQuan/MYCityListViewController/master/Demo/334.gif
+)
+
+Compatibility
+==============
+iPhone / iPad / iPod with iOS  8 / 9.
+
+<br/><br/>
+---
+中文介绍
+==============
+iOS 城市选择控制器。<br/>
+
+> ![demo](https://raw.github.com/ibireme/YYKeyboardManager/master/Demo/snapshot.gif
+)
+
+兼容性
+==============
+该项目能很好的兼容 iPhone / iPad / iPod，兼容 iOS 6 / 7 / 8 / 9，
+并且能很好的处理屏幕旋转。
+
+用法
+==============
+	// 初始化城市控制器，并设置代理
+ MYCityListViewController *cityVC = [[MYCityListViewController alloc] init];
+ cityVC.delegate = self;
+
+// 遵守代理协议
+<MYCityListViewControllerDelegaate>
+	
+	// 实现代理方法
+- (void)didSelectCity:(NSString *)cityName
+{
+    [self.cityButton setTitle:cityName forState:UIControlStateNormal];
+}
+
+总结：so easy !
