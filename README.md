@@ -1,15 +1,10 @@
-MYCityListViewController
-
+## MYCityListViewController
 ==============
 
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/ibireme/YYKeyboardManager/master/LICENSE)&nbsp;
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)&nbsp;
 
 ![MYCityListViewController](334.gif)
-
-Compatibility
-==============
-iPhone / iPad / iPod with iOS  8 / 9.
 
 <br/><br/>
 ---
