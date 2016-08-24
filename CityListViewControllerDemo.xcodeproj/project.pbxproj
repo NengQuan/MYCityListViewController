@@ -15,6 +15,22 @@
 		FBB6F9E01D6D80B70073B092 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBB6F9DE1D6D80B70073B092 /* LaunchScreen.storyboard */; };
 		FBB6F9EB1D6D80B70073B092 /* CityListViewControllerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB6F9EA1D6D80B70073B092 /* CityListViewControllerDemoTests.m */; };
 		FBB6F9F61D6D80B70073B092 /* CityListViewControllerDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB6F9F51D6D80B70073B092 /* CityListViewControllerDemoUITests.m */; };
+		FBB6FA591D6D84BE0073B092 /* MYCityEntyM.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB6FA3C1D6D84BE0073B092 /* MYCityEntyM.m */; };
+		FBB6FA5A1D6D84BE0073B092 /* cityListSourceArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBB6FA3E1D6D84BE0073B092 /* cityListSourceArray.plist */; };
+		FBB6FA5B1D6D84BE0073B092 /* hotcity.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBB6FA3F1D6D84BE0073B092 /* hotcity.plist */; };
+		FBB6FA5C1D6D84BE0073B092 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = FBB6FA401D6D84BE0073B092 /* pinyin.c */; };
+		FBB6FA5D1D6D84BE0073B092 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB6FA431D6D84BE0073B092 /* UIImage+Extension.m */; };
+		FBB6FA5E1D6D84BE0073B092 /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB6FA451D6D84BE0073B092 /* UIView+Addition.m */; };
+		FBB6FA5F1D6D84BE0073B092 /* HotCityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB6FA481D6D84BE0073B092 /* HotCityTableViewCell.m */; };
+		FBB6FA601D6D84BE0073B092 /* HotCityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB6FA491D6D84BE0073B092 /* HotCityTableViewCell.xib */; };
+		FBB6FA611D6D84BE0073B092 /* MYCityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB6FA4C1D6D84BE0073B092 /* MYCityListViewController.m */; };
+		FBB6FA621D6D84BE0073B092 /* MYCityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB6FA4D1D6D84BE0073B092 /* MYCityListViewController.xib */; };
+		FBB6FA631D6D84BE0073B092 /* MYCitySearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB6FA4F1D6D84BE0073B092 /* MYCitySearchViewController.m */; };
+		FBB6FA641D6D84BE0073B092 /* MYHotCityCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB6FA511D6D84BE0073B092 /* MYHotCityCollectionReusableView.m */; };
+		FBB6FA651D6D84BE0073B092 /* MYHotCityCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB6FA521D6D84BE0073B092 /* MYHotCityCollectionReusableView.xib */; };
+		FBB6FA661D6D84BE0073B092 /* MYHotCityCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB6FA541D6D84BE0073B092 /* MYHotCityCollectionViewCell.m */; };
+		FBB6FA671D6D84BE0073B092 /* MYHotCityCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB6FA551D6D84BE0073B092 /* MYHotCityCollectionViewCell.xib */; };
+		FBB6FA6D1D6D8EFB0073B092 /* MYLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB6FA6C1D6D8EFB0073B092 /* MYLocationManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +67,32 @@
 		FBB6F9F11D6D80B70073B092 /* CityListViewControllerDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityListViewControllerDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBB6F9F51D6D80B70073B092 /* CityListViewControllerDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityListViewControllerDemoUITests.m; sourceTree = "<group>"; };
 		FBB6F9F71D6D80B70073B092 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBB6FA3B1D6D84BE0073B092 /* MYCityEntyM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYCityEntyM.h; sourceTree = "<group>"; };
+		FBB6FA3C1D6D84BE0073B092 /* MYCityEntyM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYCityEntyM.m; sourceTree = "<group>"; };
+		FBB6FA3E1D6D84BE0073B092 /* cityListSourceArray.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cityListSourceArray.plist; sourceTree = "<group>"; };
+		FBB6FA3F1D6D84BE0073B092 /* hotcity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hotcity.plist; sourceTree = "<group>"; };
+		FBB6FA401D6D84BE0073B092 /* pinyin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pinyin.c; sourceTree = "<group>"; };
+		FBB6FA411D6D84BE0073B092 /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
+		FBB6FA421D6D84BE0073B092 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
+		FBB6FA431D6D84BE0073B092 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
+		FBB6FA441D6D84BE0073B092 /* UIView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Addition.h"; sourceTree = "<group>"; };
+		FBB6FA451D6D84BE0073B092 /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addition.m"; sourceTree = "<group>"; };
+		FBB6FA471D6D84BE0073B092 /* HotCityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotCityTableViewCell.h; sourceTree = "<group>"; };
+		FBB6FA481D6D84BE0073B092 /* HotCityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotCityTableViewCell.m; sourceTree = "<group>"; };
+		FBB6FA491D6D84BE0073B092 /* HotCityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HotCityTableViewCell.xib; sourceTree = "<group>"; };
+		FBB6FA4B1D6D84BE0073B092 /* MYCityListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYCityListViewController.h; sourceTree = "<group>"; };
+		FBB6FA4C1D6D84BE0073B092 /* MYCityListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYCityListViewController.m; sourceTree = "<group>"; };
+		FBB6FA4D1D6D84BE0073B092 /* MYCityListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MYCityListViewController.xib; sourceTree = "<group>"; };
+		FBB6FA4E1D6D84BE0073B092 /* MYCitySearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYCitySearchViewController.h; sourceTree = "<group>"; };
+		FBB6FA4F1D6D84BE0073B092 /* MYCitySearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYCitySearchViewController.m; sourceTree = "<group>"; };
+		FBB6FA501D6D84BE0073B092 /* MYHotCityCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYHotCityCollectionReusableView.h; path = CityListViewControllerDemo/CityListViewController/VC/MYHotCityCollectionReusableView.h; sourceTree = SOURCE_ROOT; };
+		FBB6FA511D6D84BE0073B092 /* MYHotCityCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYHotCityCollectionReusableView.m; path = CityListViewControllerDemo/CityListViewController/VC/MYHotCityCollectionReusableView.m; sourceTree = SOURCE_ROOT; };
+		FBB6FA521D6D84BE0073B092 /* MYHotCityCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MYHotCityCollectionReusableView.xib; path = CityListViewControllerDemo/CityListViewController/VC/MYHotCityCollectionReusableView.xib; sourceTree = SOURCE_ROOT; };
+		FBB6FA531D6D84BE0073B092 /* MYHotCityCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYHotCityCollectionViewCell.h; path = CityListViewControllerDemo/CityListViewController/VC/MYHotCityCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		FBB6FA541D6D84BE0073B092 /* MYHotCityCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYHotCityCollectionViewCell.m; path = CityListViewControllerDemo/CityListViewController/VC/MYHotCityCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		FBB6FA551D6D84BE0073B092 /* MYHotCityCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MYHotCityCollectionViewCell.xib; path = CityListViewControllerDemo/CityListViewController/VC/MYHotCityCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		FBB6FA6B1D6D8EFB0073B092 /* MYLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYLocationManager.h; sourceTree = "<group>"; };
+		FBB6FA6C1D6D8EFB0073B092 /* MYLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYLocationManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +143,7 @@
 		FBB6F9CF1D6D80B70073B092 /* CityListViewControllerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				FBB6FA391D6D84BE0073B092 /* CityListViewController */,
 				FBB6F9D31D6D80B70073B092 /* AppDelegate.h */,
 				FBB6F9D41D6D80B70073B092 /* AppDelegate.m */,
 				FBB6F9D61D6D80B70073B092 /* ViewController.h */,
@@ -138,6 +181,71 @@
 				FBB6F9F71D6D80B70073B092 /* Info.plist */,
 			);
 			path = CityListViewControllerDemoUITests;
+			sourceTree = "<group>";
+		};
+		FBB6FA391D6D84BE0073B092 /* CityListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FBB6FA3A1D6D84BE0073B092 /* M */,
+				FBB6FA3D1D6D84BE0073B092 /* Ohter */,
+				FBB6FA461D6D84BE0073B092 /* V */,
+				FBB6FA4A1D6D84BE0073B092 /* VC */,
+			);
+			path = CityListViewController;
+			sourceTree = "<group>";
+		};
+		FBB6FA3A1D6D84BE0073B092 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				FBB6FA3B1D6D84BE0073B092 /* MYCityEntyM.h */,
+				FBB6FA3C1D6D84BE0073B092 /* MYCityEntyM.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		FBB6FA3D1D6D84BE0073B092 /* Ohter */ = {
+			isa = PBXGroup;
+			children = (
+				FBB6FA3E1D6D84BE0073B092 /* cityListSourceArray.plist */,
+				FBB6FA3F1D6D84BE0073B092 /* hotcity.plist */,
+				FBB6FA401D6D84BE0073B092 /* pinyin.c */,
+				FBB6FA411D6D84BE0073B092 /* pinyin.h */,
+				FBB6FA421D6D84BE0073B092 /* UIImage+Extension.h */,
+				FBB6FA431D6D84BE0073B092 /* UIImage+Extension.m */,
+				FBB6FA441D6D84BE0073B092 /* UIView+Addition.h */,
+				FBB6FA451D6D84BE0073B092 /* UIView+Addition.m */,
+				FBB6FA6B1D6D8EFB0073B092 /* MYLocationManager.h */,
+				FBB6FA6C1D6D8EFB0073B092 /* MYLocationManager.m */,
+			);
+			path = Ohter;
+			sourceTree = "<group>";
+		};
+		FBB6FA461D6D84BE0073B092 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				FBB6FA501D6D84BE0073B092 /* MYHotCityCollectionReusableView.h */,
+				FBB6FA511D6D84BE0073B092 /* MYHotCityCollectionReusableView.m */,
+				FBB6FA521D6D84BE0073B092 /* MYHotCityCollectionReusableView.xib */,
+				FBB6FA531D6D84BE0073B092 /* MYHotCityCollectionViewCell.h */,
+				FBB6FA541D6D84BE0073B092 /* MYHotCityCollectionViewCell.m */,
+				FBB6FA551D6D84BE0073B092 /* MYHotCityCollectionViewCell.xib */,
+				FBB6FA471D6D84BE0073B092 /* HotCityTableViewCell.h */,
+				FBB6FA481D6D84BE0073B092 /* HotCityTableViewCell.m */,
+				FBB6FA491D6D84BE0073B092 /* HotCityTableViewCell.xib */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		FBB6FA4A1D6D84BE0073B092 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				FBB6FA4B1D6D84BE0073B092 /* MYCityListViewController.h */,
+				FBB6FA4C1D6D84BE0073B092 /* MYCityListViewController.m */,
+				FBB6FA4D1D6D84BE0073B092 /* MYCityListViewController.xib */,
+				FBB6FA4E1D6D84BE0073B092 /* MYCitySearchViewController.h */,
+				FBB6FA4F1D6D84BE0073B092 /* MYCitySearchViewController.m */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,7 +351,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBB6FA651D6D84BE0073B092 /* MYHotCityCollectionReusableView.xib in Resources */,
+				FBB6FA601D6D84BE0073B092 /* HotCityTableViewCell.xib in Resources */,
+				FBB6FA5A1D6D84BE0073B092 /* cityListSourceArray.plist in Resources */,
 				FBB6F9E01D6D80B70073B092 /* LaunchScreen.storyboard in Resources */,
+				FBB6FA5B1D6D84BE0073B092 /* hotcity.plist in Resources */,
+				FBB6FA671D6D84BE0073B092 /* MYHotCityCollectionViewCell.xib in Resources */,
+				FBB6FA621D6D84BE0073B092 /* MYCityListViewController.xib in Resources */,
 				FBB6F9DD1D6D80B70073B092 /* Assets.xcassets in Resources */,
 				FBB6F9DB1D6D80B70073B092 /* Main.storyboard in Resources */,
 			);
@@ -270,9 +384,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBB6FA5F1D6D84BE0073B092 /* HotCityTableViewCell.m in Sources */,
+				FBB6FA5C1D6D84BE0073B092 /* pinyin.c in Sources */,
+				FBB6FA5E1D6D84BE0073B092 /* UIView+Addition.m in Sources */,
+				FBB6FA611D6D84BE0073B092 /* MYCityListViewController.m in Sources */,
+				FBB6FA641D6D84BE0073B092 /* MYHotCityCollectionReusableView.m in Sources */,
+				FBB6FA661D6D84BE0073B092 /* MYHotCityCollectionViewCell.m in Sources */,
+				FBB6FA591D6D84BE0073B092 /* MYCityEntyM.m in Sources */,
+				FBB6FA6D1D6D8EFB0073B092 /* MYLocationManager.m in Sources */,
 				FBB6F9D81D6D80B70073B092 /* ViewController.m in Sources */,
+				FBB6FA5D1D6D84BE0073B092 /* UIImage+Extension.m in Sources */,
 				FBB6F9D51D6D80B70073B092 /* AppDelegate.m in Sources */,
 				FBB6F9D21D6D80B70073B092 /* main.m in Sources */,
+				FBB6FA631D6D84BE0073B092 /* MYCitySearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
