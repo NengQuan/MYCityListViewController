@@ -5,7 +5,7 @@ MYCityListViewController
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/ibireme/YYKeyboardManager/master/LICENSE)&nbsp;
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)&nbsp;
 
-![videoCover](334.gif)
+![MYCityListViewController](334.gif)
 
 Compatibility
 ==============
