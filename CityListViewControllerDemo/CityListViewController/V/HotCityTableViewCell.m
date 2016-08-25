@@ -10,14 +10,16 @@
 #import "MYHotCityCollectionReusableView.h"
 #import "MYHotCityCollectionViewCell.h"
 #import "MYCityEntyM.h"
+#import "MYCityListManager.h"
 
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width
+
 @interface HotCityTableViewCell () <UICollectionViewDataSource , UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-@property (nonatomic,strong) NSMutableArray *cityArray;
-@property (nonatomic,strong) NSMutableArray *historyArray;
+@property (nonatomic,strong) NSMutableArray *cityArray; // 城市数组
+@property (nonatomic,strong) NSMutableArray *historyArray; // 历史数据数组
 
 @end
 @implementation HotCityTableViewCell
@@ -35,15 +37,17 @@ static NSString * const MYHotCityCollectionReusableViewID = @"MYHotCityCollectio
     
     self.cityArray = [[NSMutableArray alloc]initWithCapacity:0];
     self.historyArray = [[NSMutableArray alloc] init];
-    
+    // 更新历史数据
     [self updateHistoryArray];
 
 }
-
+/**
+ *  更新历史数据
+ */
 - (void)updateHistoryArray
 {
     NSMutableArray *dataArray = [[NSMutableArray alloc] init];
-    NSArray *array =[[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
+    NSArray *array =[[NSUserDefaults standardUserDefaults] objectForKey:MYHistoryKey];
     [dataArray addObjectsFromArray:array];
      NSInteger count = dataArray.count;
     for (NSInteger row = count - 1; row >= 0 && row > count - 9; row--) {
@@ -68,7 +72,10 @@ static CGFloat leftSpace = 8;
     
     return flowLayout;
 }
-
+/**
+ *  重写城市数据set方法
+ *
+ */
 - (void)setData:(NSArray *)array
 {
     self.cityArray = [array copy];
@@ -83,13 +90,13 @@ static CGFloat leftSpace = 8;
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    if (section == 0 ) {
+    if (section == 0 ) { // 历史
         if(self.historyArray.count == 0) {
             return  0;
         } else {
             return self.historyArray.count;
         }
-    } else if (section == 1 && self.cityArray.count != 0) {
+    } else if (section == 1 && self.cityArray.count != 0) { // 热门
         return self.cityArray.count;
     }
     return 0;
@@ -109,13 +116,13 @@ static CGFloat leftSpace = 8;
     }
     
     [cityCell.cityLabel.layer setBorderWidth:1];
-    [cityCell.cityLabel.layer setBorderColor:[UIColor lightGrayColor].CGColor];
+    [cityCell.cityLabel.layer setBorderColor:[MYCityListManager collectionViewCellColor].CGColor];
     [cityCell.cityLabel.layer setCornerRadius:4];
     [cityCell.cityLabel.layer setMasksToBounds:YES];
     
     return cityCell;
 }
-
+// 设置collectionviewsessionheader
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     if([kind isEqualToString:UICollectionElementKindSectionHeader]) {
@@ -132,7 +139,9 @@ static CGFloat leftSpace = 8;
     }
     return [UICollectionReusableView alloc];
 }
-
+/**
+ *  设置collectionviewsessionheader的高度
+ */
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
     CGSize size = CGSizeMake(0, 0);
@@ -153,11 +162,7 @@ static CGFloat leftSpace = 8;
         
         cityM = [self.cityArray objectAtIndex:indexPath.row];
         
-        [[NSUserDefaults standardUserDefaults] setValue:cityM.cityName forKey:@"selectCity"];
-        
-        if ([self.hotcityDelegate respondsToSelector:@selector(hotCityCellDidSelectCity:)]) {
-            [self.hotcityDelegate hotCityCellDidSelectCity:cityM.cityName];
-        }
+        [[NSUserDefaults standardUserDefaults] setValue:cityM.cityName forKey:MYSelectCityKey];
         
         for (NSData *data in self.historyArray) {
             MYCityEntyM *city = [NSKeyedUnarchiver unarchiveObjectWithData:data];
@@ -166,10 +171,13 @@ static CGFloat leftSpace = 8;
                 break;
             }
         }
-        
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:cityM];
         [self.historyArray addObject:data];
         [self saveToPlist:self.historyArray];
+        
+        if ([self.hotcityDelegate respondsToSelector:@selector(hotCityCellDidSelectCity:)]) {
+            [self.hotcityDelegate hotCityCellDidSelectCity:cityM.cityName];
+        }
         
         [self.viewController.navigationController popViewControllerAnimated:YES];
     }
@@ -177,7 +185,7 @@ static CGFloat leftSpace = 8;
 
 - (void)saveToPlist:(NSMutableArray *)array
 {
-    [[NSUserDefaults standardUserDefaults] setValue:array forKey:@"history"];
+    [[NSUserDefaults standardUserDefaults] setValue:array forKey:MYHistoryKey];
      [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

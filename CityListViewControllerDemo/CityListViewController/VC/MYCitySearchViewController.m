@@ -9,19 +9,25 @@
 #import "MYCitySearchViewController.h"
 #import "MYCityEntyM.h"
 #import "pinyin.h"
+#import "MYCityListManager.h"
 
 @interface MYCitySearchViewController ()
 
-@property (nonatomic,strong) NSMutableArray *resultCitys;
-@property (nonatomic,strong) NSString *searchText;
+@property (nonatomic,strong) NSMutableArray *resultCitys; // 搜索结果城市数组
+@property (nonatomic,strong) NSString *searchText; // 搜索的文字
+
+@property (nonatomic,strong) MYCityListManager *cityListManager ;
+
 @end
 
 @implementation MYCitySearchViewController
 static NSString * const MYSearchCellID = @"MYSearchCellID";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:MYSearchCellID];
+    self.cityListManager = [MYCityListManager shareInstans];
 }
 
 - (void)setSearchText:(NSString *)text sourceArray:(NSArray *)sourceData
@@ -67,8 +73,7 @@ static NSString * const MYSearchCellID = @"MYSearchCellID";
     [self.tableView reloadData];
 }
 
-
-#pragma mark - Table view data source
+#pragma mark - Tableviewdatasource
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [self.view.superview endEditing:YES];
@@ -89,23 +94,20 @@ static NSString * const MYSearchCellID = @"MYSearchCellID";
         NSMutableAttributedString *attrbutString = [self changeAttributedWithSourceString:cityM.cityName replaceString:self.searchText];
         cell.textLabel.attributedText = attrbutString;
     }
+    
     cell.textLabel.text = cityM.cityName;
     cell.textLabel.font = [UIFont systemFontOfSize:14];
     return cell;
 }
 
+#pragma mark - tableviewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MYCityEntyM *cityM = self.resultCitys[indexPath.section][indexPath.row];
-    [[NSUserDefaults standardUserDefaults] setValue:cityM.cityName forKey:@"selectCity"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    if ([self.searchDelegate respondsToSelector:@selector(searchControllerDidSelectCity:)]) {
-        [self.searchDelegate searchControllerDidSelectCity:cityM.cityName];
-    }
-    
-    NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
-    
+    // 保存选中的城市
+    [self.cityListManager saveSelectCity:cityM.cityName];
+    // 取出历史数据，再添加新的历史
+    NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:MYHistoryKey];
     NSMutableArray *histotyArray = [[NSMutableArray alloc] init];
     [histotyArray addObjectsFromArray:array];
     
@@ -120,16 +122,27 @@ static NSString * const MYSearchCellID = @"MYSearchCellID";
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:cityM];
     [histotyArray addObject:data];
     [self saveToPist:histotyArray];
+    // 通知代理
+    if ([self.searchDelegate respondsToSelector:@selector(searchControllerDidSelectCity:)]) {
+        [self.searchDelegate searchControllerDidSelectCity:cityM.cityName];
+    }
     
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - NSMutableAttributedString
+/**
+ *  改变富文本
+ *
+ *  @param sourceString  源文字
+ *  @param replaceString 改变后的文字
+ */
 - (NSMutableAttributedString *)changeAttributedWithSourceString:(NSString *)sourceString replaceString:(NSString *)replaceString {
+    
     NSRange range = [sourceString rangeOfString:replaceString];
     NSMutableAttributedString *rtnMutableAttributed = [[NSMutableAttributedString alloc] initWithString:[sourceString substringToIndex:range.location] attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:14], NSForegroundColorAttributeName : [UIColor blackColor] }];
     
-    NSMutableAttributedString *replaceMutableAttributed = [[NSMutableAttributedString alloc] initWithString:replaceString attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:14], NSForegroundColorAttributeName : [UIColor orangeColor] }];
+    NSMutableAttributedString *replaceMutableAttributed = [[NSMutableAttributedString alloc] initWithString:replaceString attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:14], NSForegroundColorAttributeName : [MYCityListManager selectCityColor] }];
     
     NSMutableAttributedString *footMutableAttributed = [[NSMutableAttributedString alloc] initWithString:[sourceString substringFromIndex:(range.location + range.length)] attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:14], NSForegroundColorAttributeName : [UIColor blackColor] }];
     
@@ -141,7 +154,7 @@ static NSString * const MYSearchCellID = @"MYSearchCellID";
 
 - (void)saveToPist:(NSMutableArray *)array
 {
-    [[NSUserDefaults standardUserDefaults] setValue:array forKey:@"history"];
+    [[NSUserDefaults standardUserDefaults] setValue:array forKey:MYHistoryKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

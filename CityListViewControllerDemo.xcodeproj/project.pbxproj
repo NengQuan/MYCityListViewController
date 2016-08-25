@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB7AE63B1D6EC68200F9B436 /* MYCityListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7AE63A1D6EC68200F9B436 /* MYCityListManager.m */; };
 		FBB6F9D21D6D80B70073B092 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB6F9D11D6D80B70073B092 /* main.m */; };
 		FBB6F9D51D6D80B70073B092 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB6F9D41D6D80B70073B092 /* AppDelegate.m */; };
 		FBB6F9D81D6D80B70073B092 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB6F9D71D6D80B70073B092 /* ViewController.m */; };
@@ -19,7 +20,6 @@
 		FBB6FA5A1D6D84BE0073B092 /* cityListSourceArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBB6FA3E1D6D84BE0073B092 /* cityListSourceArray.plist */; };
 		FBB6FA5B1D6D84BE0073B092 /* hotcity.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBB6FA3F1D6D84BE0073B092 /* hotcity.plist */; };
 		FBB6FA5C1D6D84BE0073B092 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = FBB6FA401D6D84BE0073B092 /* pinyin.c */; };
-		FBB6FA5D1D6D84BE0073B092 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB6FA431D6D84BE0073B092 /* UIImage+Extension.m */; };
 		FBB6FA5E1D6D84BE0073B092 /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB6FA451D6D84BE0073B092 /* UIView+Addition.m */; };
 		FBB6FA5F1D6D84BE0073B092 /* HotCityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB6FA481D6D84BE0073B092 /* HotCityTableViewCell.m */; };
 		FBB6FA601D6D84BE0073B092 /* HotCityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB6FA491D6D84BE0073B092 /* HotCityTableViewCell.xib */; };
@@ -30,7 +30,6 @@
 		FBB6FA651D6D84BE0073B092 /* MYHotCityCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB6FA521D6D84BE0073B092 /* MYHotCityCollectionReusableView.xib */; };
 		FBB6FA661D6D84BE0073B092 /* MYHotCityCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB6FA541D6D84BE0073B092 /* MYHotCityCollectionViewCell.m */; };
 		FBB6FA671D6D84BE0073B092 /* MYHotCityCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB6FA551D6D84BE0073B092 /* MYHotCityCollectionViewCell.xib */; };
-		FBB6FA6D1D6D8EFB0073B092 /* MYLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB6FA6C1D6D8EFB0073B092 /* MYLocationManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FB7AE6391D6EC68200F9B436 /* MYCityListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYCityListManager.h; sourceTree = "<group>"; };
+		FB7AE63A1D6EC68200F9B436 /* MYCityListManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYCityListManager.m; sourceTree = "<group>"; };
 		FBB6F9CD1D6D80B70073B092 /* CityListViewControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityListViewControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBB6F9D11D6D80B70073B092 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FBB6F9D31D6D80B70073B092 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -73,8 +74,6 @@
 		FBB6FA3F1D6D84BE0073B092 /* hotcity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hotcity.plist; sourceTree = "<group>"; };
 		FBB6FA401D6D84BE0073B092 /* pinyin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pinyin.c; sourceTree = "<group>"; };
 		FBB6FA411D6D84BE0073B092 /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
-		FBB6FA421D6D84BE0073B092 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
-		FBB6FA431D6D84BE0073B092 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 		FBB6FA441D6D84BE0073B092 /* UIView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Addition.h"; sourceTree = "<group>"; };
 		FBB6FA451D6D84BE0073B092 /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addition.m"; sourceTree = "<group>"; };
 		FBB6FA471D6D84BE0073B092 /* HotCityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotCityTableViewCell.h; sourceTree = "<group>"; };
@@ -91,8 +90,6 @@
 		FBB6FA531D6D84BE0073B092 /* MYHotCityCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYHotCityCollectionViewCell.h; path = CityListViewControllerDemo/CityListViewController/VC/MYHotCityCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
 		FBB6FA541D6D84BE0073B092 /* MYHotCityCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYHotCityCollectionViewCell.m; path = CityListViewControllerDemo/CityListViewController/VC/MYHotCityCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
 		FBB6FA551D6D84BE0073B092 /* MYHotCityCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MYHotCityCollectionViewCell.xib; path = CityListViewControllerDemo/CityListViewController/VC/MYHotCityCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
-		FBB6FA6B1D6D8EFB0073B092 /* MYLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYLocationManager.h; sourceTree = "<group>"; };
-		FBB6FA6C1D6D8EFB0073B092 /* MYLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYLocationManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,12 +207,10 @@
 				FBB6FA3F1D6D84BE0073B092 /* hotcity.plist */,
 				FBB6FA401D6D84BE0073B092 /* pinyin.c */,
 				FBB6FA411D6D84BE0073B092 /* pinyin.h */,
-				FBB6FA421D6D84BE0073B092 /* UIImage+Extension.h */,
-				FBB6FA431D6D84BE0073B092 /* UIImage+Extension.m */,
 				FBB6FA441D6D84BE0073B092 /* UIView+Addition.h */,
 				FBB6FA451D6D84BE0073B092 /* UIView+Addition.m */,
-				FBB6FA6B1D6D8EFB0073B092 /* MYLocationManager.h */,
-				FBB6FA6C1D6D8EFB0073B092 /* MYLocationManager.m */,
+				FB7AE6391D6EC68200F9B436 /* MYCityListManager.h */,
+				FB7AE63A1D6EC68200F9B436 /* MYCityListManager.m */,
 			);
 			path = Ohter;
 			sourceTree = "<group>";
@@ -391,9 +386,8 @@
 				FBB6FA641D6D84BE0073B092 /* MYHotCityCollectionReusableView.m in Sources */,
 				FBB6FA661D6D84BE0073B092 /* MYHotCityCollectionViewCell.m in Sources */,
 				FBB6FA591D6D84BE0073B092 /* MYCityEntyM.m in Sources */,
-				FBB6FA6D1D6D8EFB0073B092 /* MYLocationManager.m in Sources */,
+				FB7AE63B1D6EC68200F9B436 /* MYCityListManager.m in Sources */,
 				FBB6F9D81D6D80B70073B092 /* ViewController.m in Sources */,
-				FBB6FA5D1D6D84BE0073B092 /* UIImage+Extension.m in Sources */,
 				FBB6F9D51D6D80B70073B092 /* AppDelegate.m in Sources */,
 				FBB6F9D21D6D80B70073B092 /* main.m in Sources */,
 				FBB6FA631D6D84BE0073B092 /* MYCitySearchViewController.m in Sources */,
@@ -622,6 +616,7 @@
 				FBB6F9FC1D6D80B70073B092 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FBB6F9FD1D6D80B70073B092 /* Build configuration list for PBXNativeTarget "CityListViewControllerDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -630,6 +625,7 @@
 				FBB6F9FF1D6D80B70073B092 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FBB6FA001D6D80B70073B092 /* Build configuration list for PBXNativeTarget "CityListViewControllerDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -638,6 +634,7 @@
 				FBB6FA021D6D80B70073B092 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

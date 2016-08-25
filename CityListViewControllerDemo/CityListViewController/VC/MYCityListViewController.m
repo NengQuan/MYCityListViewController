@@ -7,38 +7,41 @@
 //
 
 #import "MYCityListViewController.h"
-#import "MYCityEntyM.h"
 #import "MYCitySearchViewController.h"
+
+#import "MYCityEntyM.h"
+
 #import "HotCityTableViewCell.h"
+
 #import "UIView+Addition.h"
-#import "MYLocationManager.h"
+#import "MYCityListManager.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface MYCityListViewController () <UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate,MYCitySearchViewControllerDelegate,HotCityTableViewCellDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *searchCityTextField;
 
+@property (weak, nonatomic) IBOutlet UITextField *searchCityTextField; // 搜索输入框
 @property (weak, nonatomic) IBOutlet UITableView *bgTable;
-@property (weak, nonatomic) IBOutlet UIView *searchView;
+@property (weak, nonatomic) IBOutlet UIView *searchView;              // 搜索view
 
 @property (nonatomic,strong) MYCitySearchViewController *searchVC;
 
 @property (nonatomic, strong) NSMutableArray *appearkeysArray;     //呈现24个字母
-@property (nonatomic, strong) NSMutableArray *keysArray;                  //24个字母
+@property (nonatomic, strong) NSMutableArray *keysArray;           //24个字母
 
 @property (nonatomic, strong) NSMutableArray *appearSectionTitle;   //区头
-@property (nonatomic, strong) NSMutableArray *sectionTitle;               //区头
+@property (nonatomic, strong) NSMutableArray *sectionTitle;         //区头
 
 @property (nonatomic, strong) NSMutableArray *appearDataSource;   //呈现所有城市
-@property (nonatomic, strong) NSMutableArray *dataSource;               //所有城市
+@property (nonatomic, strong) NSMutableArray *dataSource;         //所有城市
 
-@property (nonatomic,strong) NSArray *topCityAaary ;
+@property (nonatomic,strong) NSArray *topCityAaary ;             // 热门城市数组
 
-@property (strong, nonatomic) IBOutlet UIView *headerView;
-@property (weak, nonatomic) IBOutlet UILabel *cityLabel;
+@property (strong, nonatomic) IBOutlet UIView *headerView;       // tableview header
+@property (weak, nonatomic) IBOutlet UILabel *cityLabel;         // 城市定位label
 /** 位置管理者 */
 @property (nonatomic, strong) CLLocationManager *lM;
 @property (nonatomic,strong) CLGeocoder *geocoder ;
-@property (nonatomic,strong) MYLocationManager *locationHelper ;
+@property (nonatomic,strong) MYCityListManager *locationHelper ;
 
 @end
 
@@ -49,6 +52,7 @@
 static NSString *cellID = @"cellID";
 static NSString *hotcellID = @"hotcellID";
 
+#pragma mark - 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -56,23 +60,6 @@ static NSString *hotcellID = @"hotcellID";
     [self configData];
     [self configCityList];
     [self configNotifig];
-}
-
-- (CLLocationManager *)lM
-{
-    if (!_lM) {
-        // 1. 创建位置管理者
-        _lM = [[CLLocationManager alloc] init];
-        _lM.delegate = self;
-        _lM.desiredAccuracy = kCLLocationAccuracyBest;
-        /** -------iOS8.0+定位适配-------- */
-        if([[UIDevice currentDevice].systemVersion floatValue] >= 8.0)
-        {
-            [_lM requestWhenInUseAuthorization];
-            
-        }
-    }
-    return _lM;
 }
 
 - (void)dealloc
@@ -91,12 +78,31 @@ static NSString *hotcellID = @"hotcellID";
     return _searchVC;
 }
 
+- (CLLocationManager *)lM
+{
+    if (!_lM) {
+        // 1. 创建位置管理者
+        _lM = [[CLLocationManager alloc] init];
+        _lM.delegate = self;
+        _lM.desiredAccuracy = kCLLocationAccuracyBest;
+        /** -------iOS8.0+定位适配-------- */
+        if([[UIDevice currentDevice].systemVersion floatValue] >= 8.0)
+        {
+            [_lM requestWhenInUseAuthorization];
+        }
+    }
+    return _lM;
+}
+
+#pragma mark - 初始化
 - (void)configUI
 {
     self.title = @"选择城市";
     self.navigationController.navigationBar.translucent = NO;
+    
     [self.bgTable setSectionIndexBackgroundColor:[UIColor clearColor]];
     self.bgTable.tableHeaderView = self.headerView;
+    [self.bgTable setSectionIndexColor:[MYCityListManager sessionIndexColor]];
     [self.bgTable registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
     [self.bgTable registerNib:[UINib nibWithNibName:NSStringFromClass([HotCityTableViewCell class]) bundle:nil] forCellReuseIdentifier:hotcellID];
     
@@ -122,7 +128,9 @@ static NSString *hotcellID = @"hotcellID";
     
     self.topCityAaary = [[NSArray alloc] init];
 }
-
+/**
+ *  初始化城市列表
+ */
 - (void)configCityList
 {
     NSString *path = [[NSBundle mainBundle]pathForResource:CITY_LIST_SOURCE_PLIST ofType:nil];
@@ -140,6 +148,7 @@ static NSString *hotcellID = @"hotcellID";
           [self overgainCitySourceData:[resultCitylist mutableCopy]];
     }
     
+    // 热门城市处理
     NSString *hotpath = [[NSBundle mainBundle]pathForResource:HOT_CITY_PLIST ofType:nil];
     NSArray *hotCityArray = [NSArray arrayWithContentsOfFile:hotpath];
     NSMutableArray *hotCityModelArray = [[NSMutableArray alloc] init];
@@ -180,11 +189,16 @@ static NSString *hotcellID = @"hotcellID";
     [self.bgTable reloadData];
 }
 
+/**
+ *  初始化通知
+ */
 - (void)configNotifig
 {
     // TextField文字发生改变触发
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(infoAction) name:UITextFieldTextDidChangeNotification object:self.searchCityTextField];
 }
+
+#pragma mark - Action 
 /**
  *  刷新定位
  */
@@ -244,13 +258,13 @@ static NSString *hotcellID = @"hotcellID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
+    if (indexPath.section == 0) { // 热门城市cell
         HotCityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:hotcellID];
         [cell setData:self.topCityAaary];
         cell.hotcityDelegate = self;
         cell.viewController = self;
         return cell;
-    } else {
+    } else { // 城市列表cell
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
         MYCityEntyM *cityM = self.appearDataSource[indexPath.section][indexPath.row];
         cell.textLabel.text = cityM.cityName;
@@ -262,11 +276,14 @@ static NSString *hotcellID = @"hotcellID";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
+    
+        NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:MYHistoryKey];
         float modelsHeight = (float)(array.count > 8 ? 8 : array.count) / 4;
         float topArrayHeight = (float)self.topCityAaary.count / 4;
         NSInteger height = 0;
+        // 搜索历史高度
         height += (NSInteger)ceilf(topArrayHeight) > 0 ? (NSInteger)ceilf(topArrayHeight) * 25 + (NSInteger)topArrayHeight * 15 + 54: 0;
+        // 热门城市高度
         height += (NSInteger)ceilf(modelsHeight) > 0 ? (NSInteger)ceilf(modelsHeight) * 25 + (NSInteger)(modelsHeight) * 16 + 54 : 0;
         
         return height;
@@ -281,19 +298,14 @@ static NSString *hotcellID = @"hotcellID";
 {
     if (!indexPath.section == 0) {
         MYCityEntyM *cityM = self.appearDataSource[indexPath.section][indexPath.row];
-        
-        self.locationHelper = [MYLocationManager instannLocationManagerHelper];
+        // 保存选中的城市
+        self.locationHelper = [MYCityListManager shareInstans];
         [self.locationHelper saveSelectCity:cityM.cityName];
-        
-        if([self.delegate respondsToSelector:@selector(didSelectCity:)]) {
-            [self.delegate didSelectCity:cityM.cityName];
-        }
-        
-       NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
-        
+        // 取出搜索历史
+       NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:MYHistoryKey];
         NSMutableArray *histotyArray = [[NSMutableArray alloc] init];
         [histotyArray addObjectsFromArray:array];
-        
+        // 删除历史中重复的
         for (NSData *data in histotyArray) {
             MYCityEntyM *city = [NSKeyedUnarchiver unarchiveObjectWithData:data];
             if ([city.cityCode isEqualToString:cityM.cityCode]) {
@@ -301,10 +313,14 @@ static NSString *hotcellID = @"hotcellID";
                 break;
             }
         }
-        
+        // 保存历史数据
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:cityM];
         [histotyArray addObject:data];
         [self saveToPist:histotyArray];
+        // 触发选中城市代理
+        if([self.delegate respondsToSelector:@selector(didSelectCity:)]) {
+            [self.delegate didSelectCity:cityM.cityName];
+        }
         
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -329,7 +345,7 @@ static NSString *hotcellID = @"hotcellID";
 
 - (void)saveToPist:(NSMutableArray *)array
 {
-    [[NSUserDefaults standardUserDefaults] setValue:array forKey:@"history"];
+    [[NSUserDefaults standardUserDefaults] setValue:array forKey:MYHistoryKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

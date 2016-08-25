@@ -8,13 +8,13 @@
 
 #import "ViewController.h"
 #import "MYCityListViewController.h"
-#import "MYLocationManager.h"
+#import "MYCityListManager.h"
 
 @interface ViewController ()<MYCityListViewControllerDelegaate>
 
 @property (weak, nonatomic) IBOutlet UIButton *cityButton;
 
-@property (nonatomic,strong) MYLocationManager *manager ;
+@property (nonatomic,strong) MYCityListManager *manager ;
 @end
 
 @implementation ViewController
@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.manager = [MYLocationManager instannLocationManagerHelper];
+    self.manager = [MYCityListManager shareInstans];
     [self.manager getSelectCity:^(NSString *cityName) {
         [self.cityButton setTitle:cityName forState:UIControlStateNormal];
     }];
