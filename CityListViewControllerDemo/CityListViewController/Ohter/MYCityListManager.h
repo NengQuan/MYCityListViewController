@@ -6,8 +6,6 @@
 //  Copyright © 2016年 NengQuan. All rights reserved.
 //
 
-// 管理器，用来修改内部的颜色，保存选中的城市
-
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
@@ -19,6 +17,7 @@ typedef void(^getCityBlock)(NSString *cityName);
 extern NSString *const MYHistoryKey;  /// 历史
 extern NSString *const MYSelectCityKey ; /// 选中城市
 
+/// 管理器，用来修改内部的颜色，保存选中的城市
 @interface MYCityListManager : NSObject
 
 + (instancetype)shareInstans ;

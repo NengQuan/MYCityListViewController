@@ -65,8 +65,13 @@ static CGFloat leftSpace = 8;
     CGFloat itemW = 70;
     CGFloat itemH = 25;
     flowLayout.itemSize = CGSizeMake(itemW, itemH);
-    flowLayout.minimumInteritemSpacing = (ScreenWidth - 4 * itemW )/ 5;
+    NSInteger minimumInteritemSpacing = (ScreenWidth - 4 * itemW )/ 5;
     flowLayout.minimumLineSpacing = 15;
+    if (ScreenWidth > 320) {
+        flowLayout.minimumInteritemSpacing = minimumInteritemSpacing;
+    } else {
+        flowLayout.minimumInteritemSpacing = 0 ; 
+    }
     flowLayout.headerReferenceSize = CGSizeMake(ScreenWidth, sessionHeight);
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     

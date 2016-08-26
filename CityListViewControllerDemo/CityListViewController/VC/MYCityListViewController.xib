@@ -35,7 +35,7 @@
                             </connections>
                         </textField>
                     </subviews>
-                    <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="SLY-dy-s0n" firstAttribute="leading" secondItem="Avh-GV-JDM" secondAttribute="leading" constant="8" id="ZG9-Za-2Ys"/>
                         <constraint firstItem="SLY-dy-s0n" firstAttribute="centerY" secondItem="Avh-GV-JDM" secondAttribute="centerY" id="ZIf-OI-kUo"/>

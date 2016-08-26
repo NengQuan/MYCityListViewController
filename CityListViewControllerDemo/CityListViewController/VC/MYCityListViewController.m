@@ -62,6 +62,14 @@ static NSString *hotcellID = @"hotcellID";
     [self configNotifig];
 }
 
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    self.searchView.height = KIphoneSize_Height(70);
+    self.searchCityTextField.height = KIphoneSize_Height(40);
+    NSLog(@"%f",self.searchView.height);
+}
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
