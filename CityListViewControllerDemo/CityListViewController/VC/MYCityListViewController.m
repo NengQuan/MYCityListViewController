@@ -67,7 +67,6 @@ static NSString *hotcellID = @"hotcellID";
     [super viewDidLayoutSubviews];
     self.searchView.height = KIphoneSize_Height(70);
     self.searchCityTextField.height = KIphoneSize_Height(40);
-    NSLog(@"%f",self.searchView.height);
 }
 
 - (void)dealloc
