@@ -322,7 +322,7 @@ static NSString *hotcellID = @"hotcellID";
         }
         // 保存历史数据
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:cityM];
-        [histotyArray addObject:data];
+        [histotyArray insertObject:data atIndex:0];
         [self saveToPist:histotyArray];
         // 触发选中城市代理
         if([self.delegate respondsToSelector:@selector(didSelectCity:)]) {
@@ -352,7 +352,8 @@ static NSString *hotcellID = @"hotcellID";
 
 - (void)saveToPist:(NSMutableArray *)array
 {
-    [[NSUserDefaults standardUserDefaults] setValue:array forKey:MYHistoryKey];
+     NSArray *dataArray = [NSArray arrayWithArray:array];
+    [[NSUserDefaults standardUserDefaults] setValue:dataArray forKey:MYHistoryKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

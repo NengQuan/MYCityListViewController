@@ -36,7 +36,7 @@ static NSString * const MYHotCityCollectionReusableViewID = @"MYHotCityCollectio
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([MYHotCityCollectionReusableView class]) bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:MYHotCityCollectionReusableViewID];
     
     self.cityArray = [[NSMutableArray alloc]initWithCapacity:0];
-    self.historyArray = [[NSMutableArray alloc] init];
+    self.historyArray = [[NSMutableArray alloc] initWithCapacity:4];
     // 更新历史数据
     [self updateHistoryArray];
 
@@ -47,13 +47,20 @@ static NSString * const MYHotCityCollectionReusableViewID = @"MYHotCityCollectio
 - (void)updateHistoryArray
 {
     NSMutableArray *dataArray = [[NSMutableArray alloc] init];
+    NSMutableArray *cityArray = [[NSMutableArray alloc] init];
     NSArray *array =[[NSUserDefaults standardUserDefaults] objectForKey:MYHistoryKey];
+    for (NSData *data in array) {
+         MYCityEntyM *cityM = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        [cityArray addObject:cityM];
+    }
+    
     [dataArray addObjectsFromArray:array];
-     NSInteger count = dataArray.count;
-    for (NSInteger row = count - 1; row >= 0 && row > count - 9; row--) {
-        NSData *data = [dataArray objectAtIndex:row];
+    
+    for (int i = 0;i < 8;i++) {
+        NSData *data = [dataArray objectAtIndex:i];
         [self.historyArray addObject:data];
     }
+
     [self.collectionView reloadData];
 }
 
@@ -177,7 +184,7 @@ static CGFloat leftSpace = 8;
             }
         }
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:cityM];
-        [self.historyArray addObject:data];
+        [self.historyArray insertObject:data atIndex:0];
         [self saveToPlist:self.historyArray];
         
         if ([self.hotcityDelegate respondsToSelector:@selector(hotCityCellDidSelectCity:)]) {
@@ -190,7 +197,8 @@ static CGFloat leftSpace = 8;
 
 - (void)saveToPlist:(NSMutableArray *)array
 {
-    [[NSUserDefaults standardUserDefaults] setValue:array forKey:MYHistoryKey];
+    NSArray *dataArray = [NSArray arrayWithArray:array];
+    [[NSUserDefaults standardUserDefaults] setValue:dataArray forKey:MYHistoryKey];
      [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

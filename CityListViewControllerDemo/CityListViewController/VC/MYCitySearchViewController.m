@@ -120,7 +120,7 @@ static NSString * const MYSearchCellID = @"MYSearchCellID";
     }
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:cityM];
-    [histotyArray addObject:data];
+    [histotyArray insertObject:data atIndex:0];
     [self saveToPist:histotyArray];
     // 通知代理
     if ([self.searchDelegate respondsToSelector:@selector(searchControllerDidSelectCity:)]) {
@@ -154,7 +154,8 @@ static NSString * const MYSearchCellID = @"MYSearchCellID";
 
 - (void)saveToPist:(NSMutableArray *)array
 {
-    [[NSUserDefaults standardUserDefaults] setValue:array forKey:MYHistoryKey];
+     NSArray *dataArray = [NSArray arrayWithArray:array];
+    [[NSUserDefaults standardUserDefaults] setValue:dataArray forKey:MYHistoryKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
