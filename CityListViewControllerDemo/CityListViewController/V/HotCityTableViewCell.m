@@ -49,19 +49,23 @@ static NSString * const MYHotCityCollectionReusableViewID = @"MYHotCityCollectio
     NSMutableArray *dataArray = [[NSMutableArray alloc] init];
     NSMutableArray *cityArray = [[NSMutableArray alloc] init];
     NSArray *array =[[NSUserDefaults standardUserDefaults] objectForKey:MYHistoryKey];
-    for (NSData *data in array) {
-         MYCityEntyM *cityM = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        [cityArray addObject:cityM];
+    
+    if (array.count > 0) {
+        for (NSData *data in array) {
+            MYCityEntyM *cityM = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            [cityArray addObject:cityM];
+        }
+        
+        [dataArray addObjectsFromArray:array];
+        
+        for (int i = 0;i < 8;i++) {
+            NSData *data = [dataArray objectAtIndex:i];
+            [self.historyArray addObject:data];
+        }
+        
+        [self.collectionView reloadData];
     }
     
-    [dataArray addObjectsFromArray:array];
-    
-    for (int i = 0;i < 8;i++) {
-        NSData *data = [dataArray objectAtIndex:i];
-        [self.historyArray addObject:data];
-    }
-
-    [self.collectionView reloadData];
 }
 
 static CGFloat sessionHeight = 54;
