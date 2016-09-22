@@ -58,7 +58,7 @@ static NSString * const MYHotCityCollectionReusableViewID = @"MYHotCityCollectio
         
         [dataArray addObjectsFromArray:array];
         
-        for (int i = 0;i < 8;i++) {
+        for (int i = 0;i < (dataArray.count > 8 ?8 :dataArray.count);i++) {
             NSData *data = [dataArray objectAtIndex:i];
             [self.historyArray addObject:data];
         }
