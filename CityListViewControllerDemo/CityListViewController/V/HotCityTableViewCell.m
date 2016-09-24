@@ -18,8 +18,8 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-@property (nonatomic,strong) NSMutableArray *cityArray; // 城市数组
-@property (nonatomic,strong) NSMutableArray *historyArray; // 历史数据数组
+@property (nonatomic,strong) NSMutableArray<MYCityEntyM *> *cityArray; // 城市数组
+@property (nonatomic,strong) NSMutableArray<NSData *> *historyArray; // 历史数据数组
 
 @end
 @implementation HotCityTableViewCell
@@ -173,6 +173,24 @@ static CGFloat leftSpace = 8;
 {
     MYCityEntyM *cityM = nil;
     if (indexPath.section == 0) {
+        NSData *data = [self.historyArray objectAtIndex:indexPath.row];
+        cityM = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        [[NSUserDefaults standardUserDefaults] setValue:cityM.cityName forKey:MYSelectCityKey];
+        
+        for (NSData *data in self.historyArray) {
+            MYCityEntyM *city = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            if ([city.cityCode isEqualToString:cityM.cityCode]) {
+                [self.historyArray removeObject:data];
+                break;
+            }
+        }
+        [self.historyArray insertObject:data atIndex:0];
+        [self saveToPlist:self.historyArray];
+        
+        if ([self.hotcityDelegate respondsToSelector:@selector(historyCityCellDidSelectCity:)]) {
+            [self.hotcityDelegate historyCityCellDidSelectCity:cityM.cityName];
+        }
+        [self.viewController.navigationController popViewControllerAnimated:YES];
         
     } else if (indexPath.section == 1) {
         
