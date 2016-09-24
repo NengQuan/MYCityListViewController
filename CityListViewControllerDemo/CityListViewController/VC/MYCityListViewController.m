@@ -303,7 +303,7 @@ static NSString *hotcellID = @"hotcellID";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (!indexPath.section == 0) {
+    if (indexPath.section != 0) {
         MYCityEntyM *cityM = self.appearDataSource[indexPath.section][indexPath.row];
         // 保存选中的城市
         self.locationHelper = [MYCityListManager shareInstans];
@@ -468,4 +468,10 @@ static NSString *hotcellID = @"hotcellID";
         [self.delegate didSelectCity:cityName];
     }
 }
+- (void)historyCityCellDidSelectCity:(NSString *)cityName{
+    if ([self.delegate respondsToSelector:@selector(didSelectCity:)]) {
+        [self.delegate didSelectCity:cityName];
+    }
+}
+
 @end

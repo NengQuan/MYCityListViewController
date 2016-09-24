@@ -14,6 +14,8 @@
 
 - (void)hotCityCellDidSelectCity:(NSString *)cityName ;
 
+- (void)historyCityCellDidSelectCity:(NSString *)cityName;
+
 @end
 
 @interface HotCityTableViewCell : UITableViewCell
